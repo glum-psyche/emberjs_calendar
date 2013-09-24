@@ -1,0 +1,18 @@
+<div style="display: inline;">
+	<div id="previousYear" {{action "previousYear"}} style="display: inline;">&lt;</div>
+	{{year}}
+	<div id="nextYear" {{action "nextYear"}} style="display: inline;">&gt;</div>
+</div>
+<div style="display: inline;">
+	<div id="previousMonth" {{action "previousMonth"}} style="display: inline;">&lt;</div>
+	{{currentMonthName}}
+	<div id="nextMonth" {{action "nextMonth"}} style="display: inline;">&gt;</div>
+</div>
+{{#each week in controller.selectedMonthDays}}
+	<ul>
+		{{#each newDate in week}}
+			<li {{bindAttr style=newDate.selected}} {{action "selectDay" newDate.day}}>{{newDate.day}}</li>
+		{{/each}}
+	</ul>
+{{/each}}
+<div id="selectToday" {{action "selectToday"}}>Select Today</div>
