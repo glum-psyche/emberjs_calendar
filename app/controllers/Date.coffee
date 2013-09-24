@@ -2,7 +2,6 @@ App = require 'app'
 
 App.DateController = Ember.ObjectController.extend
 
-	weekDays: ['Sun', 'Mon', 'Tue', 'Thu', 'Fri', 'Sat']
 	months: [
 		'January'
 		'February'
@@ -18,9 +17,9 @@ App.DateController = Ember.ObjectController.extend
 		'December'
 	]
 
-	year: -1
-	month: -1
-	day: -1
+	year: 1980
+	month: 1
+	day: 1
 
 	selectDay: (aDay)->
 		@transitionToRoute 'date', {year: @year, month: @month, day: aDay}
@@ -68,9 +67,6 @@ App.DateController = Ember.ObjectController.extend
 			@set 'day', 1
 			# @transitionToRoute 'date', {year: @year, month: @month, day: @day}
 
-	weekDayName: (aDay)->
-		@weekDays[aDay]
-
 	selectedMonthDays: (->
 		firstDate = new Date @year, @month - 1, 1
 		lastDate = new Date @year, @month, 0
@@ -82,19 +78,17 @@ App.DateController = Ember.ObjectController.extend
 
 		lastDay = lastDate.getDate()
 		firstDayOfWeek = firstDate.getDay()
-
+		
 		days = []
 		for i in [1 .. lastDay]
-			style = 'display: inline; list-style-type: none; '
-			style += 'font-weight: bold; ' if i is @day
-			style += 'text-decoration: underline; ' if i is currentDay
-			newDay = Ember.Object.create {day: i, selected: style}
+			selected = i is @day
+			current = i is currentDay
+			newDay = Ember.Object.create {day: i, isSelected: selected, isCurrent: current, isButton: true}
 			days.push newDay
-		if firstDayOfWeek > 0
+		if  firstDayOfWeek > 0
 			buffer = []
-			for i in [0 .. firstDayOfWeek]
-				style = 'display: inline; list-style-type: none; '
-				newDay = Ember.Object.create {day: '_', selected: style}
+			for i in [0 .. firstDayOfWeek - 1]
+				newDay = Ember.Object.create {day: -1, isSelected: false, isCurrent: false, isButton: false}
 				buffer.push newDay
 			days[0 .. -1] = buffer
 
@@ -104,7 +98,8 @@ App.DateController = Ember.ObjectController.extend
 		out = []
 		for i in [0 .. weeks - 1]
 			first = i * 7
-			out.push days[first .. first + 6]
+			week = days[first .. first + 6]
+			out.push week
 		out
 	).property('year', 'month', 'day')
 

@@ -1,0 +1,53 @@
+.btn-date {
+	display: inline-block;
+	width: 40px;
+}
+
+.btn-empty {
+	display: inline-block;
+	width: 40px;
+}
+
+.btn-header {
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.btn-today {
+	display: inline-block;
+	width: 50px;
+}
+
+.btn-spin {
+	display: inline-block;
+	width: 25px;
+}
+
+.label-year {
+	display: inline-block;
+	width: 50px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.label-month {
+	display: inline-block;
+	width: 80px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.container-main {
+	display: block;
+}
+
+.container-header {
+	display: block;
+}
+
+
+.container-row {
+	display: block;
+}

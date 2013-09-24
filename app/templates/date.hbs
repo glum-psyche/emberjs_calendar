@@ -1,18 +1,35 @@
-<div style="display: inline;">
-	<div id="previousYear" {{action "previousYear"}} style="display: inline;">&lt;</div>
-	{{year}}
-	<div id="nextYear" {{action "nextYear"}} style="display: inline;">&gt;</div>
-</div>
-<div style="display: inline;">
-	<div id="previousMonth" {{action "previousMonth"}} style="display: inline;">&lt;</div>
-	{{currentMonthName}}
-	<div id="nextMonth" {{action "nextMonth"}} style="display: inline;">&gt;</div>
-</div>
-{{#each week in controller.selectedMonthDays}}
-	<ul>
-		{{#each newDate in week}}
-			<li {{bindAttr style=newDate.selected}} {{action "selectDay" newDate.day}}>{{newDate.day}}</li>
+<div>
+	<div class-"container-header">
+		<button class="btn btn-small btn-spin" id="previousYear" {{action "previousYear"}}>&lt;</button>
+		<div class="label-year">{{year}}</div>
+		<button class="btn btn-small btn-spin" id="nextYear" {{action "nextYear"}}>&gt;</button>
+		<button class="btn btn-small btn-spin" id="previousMonth" {{action "previousMonth"}}>&lt;</button>
+		<div class="label-month">{{currentMonthName}}</div>
+		<button class="btn btn-small btn-spin" id="nextMonth" {{action "nextMonth"}}>&gt;</button>
+		<button class="btn btn-small btn-today" id="selectToday" {{action "selectToday"}}>Today</div>
+	</div>
+	<div class="container-header">
+		<div class="btn-header">SUN</div>
+		<div class="btn-header">MON</div>
+		<div class="btn-header">TUE</div>
+		<div class="btn-header">WED</div>
+		<div class="btn-header">THU</div>
+		<div class="btn-header">FRI</div>
+		<div class="btn-header">SAT</div>
+	</div>
+	<div class="container-main">
+		{{#each week in controller.selectedMonthDays}}
+			<div class="container-row">
+				{{#each newDate in week}}
+					{{#if newDate.isButton}}
+						{{#with newDate}}
+							<button {{bindAttr class=":btn :btn-small :btn-date isCurrent:btn-info isSelected:btn-success isSelected:disabled"}} {{action "selectDay" day}}>{{day}}</button>
+						{{/with}}
+					{{else}}
+						<div class="btn-empty"></div>
+					{{/if}}
+				{{/each}}
+			</div>
 		{{/each}}
-	</ul>
-{{/each}}
-<div id="selectToday" {{action "selectToday"}}>Select Today</div>
+	</div>
+</div>
