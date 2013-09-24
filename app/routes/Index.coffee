@@ -1,9 +1,7 @@
 App = require 'app'
 
 module.exports = App.IndexRoute = Ember.Route.extend
-  model: (params) ->
-    infoMessage: """
-      Compiled on branch #{App.CONFIG.compilation.gitBranch}
-      at #{App.CONFIG.compilation.date.toTimeString()}
-      on #{App.CONFIG.compilation.date.toDateString()}
-      """
+	redirect: ()->
+		currentDate = new Date()
+		data = {year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate()}
+		@transitionTo 'date', data
