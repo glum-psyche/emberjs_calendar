@@ -18,6 +18,8 @@ Our widget is a single page application for calendar management.
 
 - There should be a controller holding the selected date, and clicking on another date in the calendar should switch to that date (also in the URL) thanks to a route event.
 
+- Currently on selecting any date the whole of month is updated. That's extremely visible on slow computers. Needed to update only dates which are part of selection process (old one and new one), if year and month are keeped the same.
+
 ## Technologies
 - [brunch-with-ember-and-bootstrap](https://github.com/huafu/brunch-with-ember-and-bootstrap) - A new and up-to-date [Brunch](http://brunch.io) skeleton for developing [Ember](http://emberjs.com) applications based on the official Ember [Starter Kit](https://github.com/emberjs/starter-kit/archive/master.zip).
 - [Ember v1.0.0-rc.7](http://emberjs.com)
