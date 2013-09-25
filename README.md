@@ -38,7 +38,7 @@ Our widget is a single page application for calendar management.
 - jump to folder and 'make' in terminal
 - 'sudo make install' for install node.js in system
 - 'sudo npm install -g brunch' - for intall "Brunch" precompiler
-- 'git clone https://github.com/saifas/ember_calendar/tree/develop ember_calendar' and jump to folder
+- 'git clone https://github.com/saifas/emberjs_calendar emberjs_calendar' and jump to folder
 - 'npm install' for getting libraries
 - 'brunch watch -s' for start server with application on port 3333
 - open [http://localhost:3333](http://localhost:3333) on your browser.
